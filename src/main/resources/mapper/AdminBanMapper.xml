@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.AdminBanMapper">
+
+    <!--    自增主键，通常不用设置-->
+    <!--    不能添加全空admin_ban-->
+    <insert id="add" parameterType="com.house.bean.AdminBan">
+        insert into admin_ban (
+        <trim prefix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="adminId != null">admin_id,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="endTime != null">end_time,</if>
+            <if test="note != null">note,</if>
+        </trim>
+        )
+        values (
+        <trim prefix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="adminId != null">#{adminId},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+            <if test="note != null">#{note},</if>
+        </trim>
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.house.bean.AdminBan">
+        delete from admin_ban
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="adminId != null">
+                AND admin_id = #{adminId}
+            </if>
+            <if test="startTime != null">
+                AND start_time = #{startTime}
+            </if>
+            <if test="endTime != null">
+                AND end_time = #{endTime}
+            </if>
+            <if test="note != null">
+                AND note = #{note}
+            </if>
+        </where>
+    </delete>
+
+    <!--    不应该更新id-->
+    <update id="update">
+        update admin_ban
+        <set>
+            <if test="new.id != null">
+                id = #{new.id},
+            </if>
+            <if test="new.adminId != null">
+                admin_id = #{new.adminId},
+            </if>
+            <if test="new.startTime != null">
+                start_time = #{new.startTime},
+            </if>
+            <if test="new.endTime != null">
+                end_time = #{new.endTime},
+            </if>
+            <if test="new.note != null">
+                note = #{new.note},
+            </if>
+        </set>
+        <where>
+            <if test="old.id != null">
+                id = #{old.id}
+            </if>
+            <if test="old.adminId != null">
+                AND admin_id = #{old.adminId}
+            </if>
+            <if test="old.startTime != null">
+                AND start_time = #{old.startTime}
+            </if>
+            <if test="old.endTime != null">
+                AND end_time = #{old.endTime}
+            </if>
+            <if test="old.note != null">
+                AND note = #{old.note}
+            </if>
+        </where>
+    </update>
+    
+    <select id="select" parameterType="com.house.bean.AdminBan" resultType="com.house.bean.AdminBan">
+    SELECT * FROM admin_ban
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="adminId != null">
+                AND admin_id = #{adminId}
+            </if>
+            <if test="startTime != null">
+                AND start_time = #{startTime}
+            </if>
+            <if test="endTime != null">
+                AND end_time = #{endTime}
+            </if>
+            <if test="note != null">
+                AND note = #{note}
+            </if>
+        </where>
+    </select>
+    
+</mapper>

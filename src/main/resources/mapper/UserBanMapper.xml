@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.UserBanMapper">
+
+    <!--    自增主键，通常不用设置-->
+    <!--    不能添加全空admin-->
+    <insert id="add" parameterType="com.house.bean.UserBan">
+        insert into user_ban (
+        <trim prefix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="account != null">account,</if>
+            <if test="password != null">password,</if>
+            <if test="isDel != null">is_del,</if>
+            <if test="isBan != null">is_ban,</if>
+            <if test="name != null">name,</if>
+        </trim>
+        )
+        values (
+        <trim prefix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="account != null">#{account},</if>
+            <if test="password != null">#{password},</if>
+            <if test="isDel != null">#{isDel},</if>
+            <if test="isBan != null">#{isBan},</if>
+            <if test="name != null">#{name},</if>
+        </trim>
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.house.bean.UserBan">
+        delete from user_ban
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="account != null">
+                AND account = #{account}
+            </if>
+            <if test="password != null">
+                AND password = #{password}
+            </if>
+            <if test="isDel != null">
+                AND is_del = #{isDel}
+            </if>
+            <if test="isBan != null">
+                AND is_ban = #{isBan}
+            </if>
+            <if test="name != null">
+                AND name = #{name}
+            </if>
+        </where>
+    </delete>
+
+    <!--    不应该更新id-->
+    <update id="update">
+        update user_ban
+        <set>
+            <if test="new.id != null">
+                id = #{new.id},
+            </if>
+            <if test="new.account != null">
+                account = #{new.account},
+            </if>
+            <if test="new.password != null">
+                password = #{new.password},
+            </if>
+            <if test="new.isDel != null">
+                is_del = #{new.isDel},
+            </if>
+            <if test="new.isBan != null">
+                is_ban = #{new.isBan},
+            </if>
+            <if test="new.name != null">
+                name = #{new.name},
+            </if>
+        </set>
+        <where>
+            <if test="old.id != null">
+                id = #{old.id}
+            </if>
+            <if test="old.account != null">
+                AND account = #{old.account}
+            </if>
+            <if test="old.password != null">
+                AND password = #{old.password}
+            </if>
+            <if test="old.isDel != null">
+                AND is_del = #{old.isDel}
+            </if>
+            <if test="old.isBan != null">
+                AND is_ban = #{old.isBan}
+            </if>
+            <if test="old.name != null">
+                AND name = #{old.name}
+            </if>
+        </where>
+    </update>
+    
+    <select id="select" parameterType="com.house.bean.UserBan" resultType="com.house.bean.UserBan">
+        select * from user_ban
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="account != null">
+                AND account = #{account}
+            </if>
+            <if test="password != null">
+                AND password = #{password}
+            </if>
+            <if test="isDel != null">
+                AND is_del = #{isDel}
+            </if>
+            <if test="isBan != null">
+                AND is_ban = #{isBan}
+            </if>
+            <if test="name != null">
+                AND name = #{name}
+            </if>
+        </where>
+    </select>
+    
+</mapper>

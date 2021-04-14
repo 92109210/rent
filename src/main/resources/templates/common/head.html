@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<div th:fragment="head">
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- search popup start-->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="td-search-popup" id="td-search-popup">
+        <form action="../index}" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- dkt-sitebar-menu end-->
+
+    <!-- dkt-sitebar-menu start-->
+    <div class="dkt-sitebar-menu">
+        <div class="dkt-sitebar-menu">
+            <a class="dkt-sitebar-close" href="#"><i class="fa fa-times"></i></a>
+            <div class="dkt-details-inner">
+                <div class="logo">
+                    <a th:href="@{/index}"><img src="/assets//img/logo-3.png" alt="img"></a>
+                </div>
+                <p class="details">网页介绍</p>
+                <div class="address-inner">
+                    <h5>办公地址</h5>
+                    <p>广东省广州市天河区</p>
+                </div>
+                <div class="address-inner">
+                    <h5>联系电话</h5>
+                    <p>888-888-888</p>
+                </div>
+                <div class="address-inner mb-0">
+                    <h5>邮箱</h5>
+                    <p>666666@haozuwang.com</p>
+                </div>
+            </div>
+            <div class="dkt-market-earn">
+                <div class="address-inner">
+                    <h5>我们的口号：</h5>
+                    <p>租得广厦千万间，大庇天下寒士俱欢颜</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="earn-inner">
+                            <p>出租数量：</p>
+                            <h5>12501</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="earn-inner">
+                            <p>求租数量：</p>
+                            <h5>25804</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- dkt-sitebar-menu end-->
+
+    <!-- navbar start -->
+    <div class="navbar-area navbar-area-2">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#dkt_main_menu"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="logo">
+                    <a class="main-logo" th:href="@{/index}"><img src="/assets//img/logo.png" alt="img"></a>
+                </div>
+                <div class="nav-right-part nav-right-part-mobile">
+                    <a class="btn btn-base" th:href="@{/page/index}">主页</a>
+                </div>
+                <div class="collapse navbar-collapse" id="dkt_main_menu">
+                    <ul class="navbar-nav menu-open">
+
+                        <li><a th:href="@{/page/index}">主页</a></li>
+                        <!--                        <li><a th:href="@{/contact}">个人中心</a></li>-->
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">个人中心</a>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/change}">修改个人信息</a></li>
+                                <li><a th:href="@{/myCollect}">我的收藏</a></li>
+                                <li><a th:href="@{/myNeed}">求租预约</a></li>
+                                <li><a th:href="@{/myOut}">出租预约</a></li>
+                            </ul>
+                        </li>
+                        <!--                        <li><a th:href="@{/page/newArticle}">发布租房信息</a></li>-->
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">我的发布</a>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/mypostN}">求租信息</a></li>
+                                <li><a th:href="@{/mypostO}">出租信息</a></li>
+                            </ul>
+                        </li>
+                        <!--                        <li><a th:href="@{/page/list}">租房</a></li>-->
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">发布信息</a>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/createN}">求租信息</a></li>
+                                <li><a th:href="@{/createO}">出租信息</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">浏览信息</a>
+                            <ul class="sub-menu">
+                                <li><a th:href="@{/rentalInNeed}">求租信息</a></li>
+                                <li><a th:href="@{/rentOut}">出租信息</a></li>
+                            </ul>
+                        </li>
+                        <!--                        ${session.user!=null}-->
+                        <li th:hidden="${session.user==null}"><a th:href="@{/loginOut}">退出登录</a></li>
+                        <li th:hidden="${session.user!=null}"><a th:href="@{/login}">登录</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">
+                    <ul>
+<!--                        <li><a href="#"><img src="/assets//img/icon/2m.png" alt="icon">0 Items</a></li>-->
+<!--                        <li><a class="search" href="#"><img src="/assets//img/icon/1b.png" alt="icon"></a></li>-->
+                        <li class="menu-bar dropdown-menu-btn"><a href="#"><i class="fa fa-bars"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+</div>
+</html>

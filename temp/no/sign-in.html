@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好租网</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+
+</head>
+<body>
+
+    <div th:replace="common/head :: head"  ></div>
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-area" style="background: #49009b">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <div class="section-title text-center">
+                            <h2 class="page-title">登录</h2>
+                            <ul class="page-list">
+                                <li><a href="index.html">主页</a></li>
+                                <li>登录</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb end -->
+
+    <!-- policy-page start -->
+    <section class="pd-top-100 pd-bottom-100 bg-sky-blue">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-10 text-center">
+                    <div class="sign-in-area">
+                        <h2>登录</h2>
+                        <form class="contact-form-wrap" action="/login" method="post">
+                            <div class="single-input-wrap input-group">
+                                <label for="inp-1">邮箱</label>
+                                <input id="inp-1" name="account" type="text" class="form-control" placeholder="输入你的邮箱">
+                            </div>
+                            <div class="single-input-wrap input-group">
+                                <label for="inp-2">密码</label>
+                                <input id="inp-2" name="password" type="password" class="form-control" placeholder="输入你的密码">
+                            </div>
+                            <button class="btn btn-base w-100">登录</button>
+                            <p>还未注册好租网账号？<a href="sign-up.html">注册</a></p>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        </div>          
+    </section>
+    <!-- policy-page end -->
+
+    <!-- footer area start -->
+    <footer class="footer-area pd-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget widget widget_contact">
+                        <h4 class="widget-title">Contact Us</h4>
+                        <div class="media">
+                            <div class="thumb">
+                                <img src="assets/img/footer/1.png" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <p>2200 Pooz Street</p>
+                                <p>Henderson, TN 38340</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb mt-0">
+                                <img src="assets/img/footer/2.png" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <p class="m-0">example@mail.com</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb mt-0">
+                                <img src="assets/img/footer/3.png" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <p class="m-0">517-383-6673</p>
+                            </div>
+                        </div>
+                        <ul class="social-area">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget widget widget_nav_menu">
+                        <h4 class="widget-title">Useful link</h4>
+                        <ul>
+                            <li><a href="#">All properties</a></li>
+                            <li><a href="#">FAQ’S</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Sign up</a></li>
+                            <li><a href="#">Articles</a></li>
+                            <li><a href="#">Popular tags</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget widget widget widget_products">
+                        <h4 class="widget-title">Products</h4>
+                        <ul>
+                            <li><a href="#">Graphics (26)</a></li>
+                            <li><a href="#">Backgrounds (11)</a></li>
+                            <li><a href="#">Fonts (9)</a></li>
+                            <li><a href="#">Music (3)</a></li>
+                            <li><a href="#">Photography (3)</a></li>
+                            <li><a href="#">Themes (3)</a></li>
+                            <li><a href="#">Web Templates (3)</a></li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer-widget widget widget_news">
+                        <h4 class="widget-title">Latest News</h4>
+                        <div class="widget-news-wrap">
+                            <div class="date">May 11, 2020</div>
+                            <p>The heights by great men </p>
+                        </div>
+                        <div class="widget-news-wrap">
+                            <div class="date">May 11, 2020</div>
+                            <p>The heights by great men </p>
+                        </div>
+                        <div class="widget-news-wrap">
+                            <div class="date">May 11, 2020</div>
+                            <p>The heights by great men </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Footer bottom-->
+        <div class="container">
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <p>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="https://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                    </div>
+                    <div class="col-lg-6 text-lg-right text-center">
+                        <ul>
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </footer>
+    <!-- footer area end -->
+
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+
+
+    <!-- all plugins here -->
+    <script th:src="@{/assets/js/vendor.js}"></script>
+    <!-- main js  -->
+    <script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

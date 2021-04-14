@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/bootstrap-3.3.7-dist/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style1.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">-->
+    <!--layui-->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+</head>
+<body>
+
+
+<div th:replace="common/head :: head"></div>
+
+
+<div class="container" style="margin-top: 150px">
+
+    <table id="demo" lay-filter="test"></table>
+
+</div>
+<!-- all plugins here-->
+<script th:src="@{/assets/js/vendor.js}"></script>
+
+<!-- js-->
+<script th:src="@{/assets/js/jquery-3.6.0.js}"></script>
+<!-- js form-->
+<!--<script th:src="@{/assets/js/jquery.form.min.js}"></script>-->
+
+<!-- main js  -->
+<script th:src="@{/assets/js/main.js}"></script>
+
+<script th:src="@{/layui/layui.js}"></script>
+
+<script th:inline="none">
+
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'
+            // , height: 312
+            , url: '/data' //数据接口
+            , page: true //开启分页
+            , limits: 5
+            , cols: [[
+                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
+                , {field: 'username', title: '用户名', width: 80}
+                , {field: 'sex', title: '性别', width: 80, sort: true}
+                , {field: 'city', title: '城市', width: 80}
+                , {field: 'sign', title: '签名', width: 177}
+                , {field: 'experience', title: '积分', width: 80, sort: true}
+                , {field: 'score', title: '评分', width: 80, sort: true}
+                , {field: 'classify', title: '职业', width: 80}
+                , {field: 'wealth', title: '财富', width: 135, sort: true}
+            ]]
+        });
+        // $(function () {
+        //
+        //     let trs = document.getElementsByTagName('tr')
+        //     console.log(trs.length)
+        //     $('tr').click(function () {
+        //         console.log('123')
+        //         console.log($(this))
+        //
+        //     })
+        // })
+        table.on('row(test)', function(obj){
+            console.log(obj.tr) //得到当前行元素对象
+            console.log(obj.data) //得到当前行数据
+            //obj.del(); //删除当前行
+            //obj.update(fields) //修改当前行数据
+        });
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+
+</html>

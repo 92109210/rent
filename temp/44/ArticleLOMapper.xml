@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.ArticleLOMapper">
+
+
+    <!--    //获得所有出租信息
+        List<ArticleLO> getOut();
+
+        //获得所有求租信息
+        List<ArticleLO> getNeed();-->
+    <select id="getOut" resultType="com.house.bean.ArticleLO">
+        SELECT article.*, COUNT(articlelike.article_id) as countLike, COUNT(order.article_id) as countOrder
+        FROM `article` LEFT JOIN `articlelike` on article.id = articlelike.article_id
+        LEFT JOIN `order` ON article.id = order.article_id
+        WHERE article.is_del = 0
+        GROUP BY article.id
+        ORDER BY article.create_time DESC
+    </select>
+
+    <select id="getNeed" resultType="com.house.bean.ArticleLO">
+        SELECT article.*, COUNT(articlelike.article_id) as countLike, COUNT(order.article_id) as countOrder
+        FROM `article` LEFT JOIN `articlelike` on article.id = articlelike.article_id
+        LEFT JOIN `order` ON article.id = order.article_id
+        WHERE article.is_del = 0
+        GROUP BY article.id
+        ORDER BY article.create_time DESC
+    </select>
+
+
+</mapper>

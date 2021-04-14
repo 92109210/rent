@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.OrderMapper">
+
+    <!--    //信息预约数-->
+    <!--    Long getArticleOrderNum(Long articleId);-->
+
+    <select id="getArticleOrderNum" resultType="java.lang.Long">
+        select count(*) from `order` where article_id = #{articleId}
+    </select>
+
+    <!--    //获取文章预约人-->
+    <!--    List<User> getArticleOrderUser(Long articleId);-->
+
+    <select id="getArticleOrderUser" resultType="com.house.bean.User" parameterType="java.lang.Long">
+        select user.id, user.password, user.is_del, user.is_ban, user.name, user.age, user.create_time, user.recent_login_time
+        from user inner join `order`
+        on user.id = order.user_id
+        where order.article_id = #{articleId}
+    </select>
+
+
+    <!--    //预约-->
+    <!--    Boolean toOrder(Long userId, Long articleId);-->
+    <insert id="toOrder">
+        insert into `order` (article_id, user_id) values (#{articleId}, #{userId})
+    </insert>
+
+    <!--    //取消预约-->
+    <!--    Boolean cancleOrder(Long userId, Long articleId);-->
+    <delete id="cancleOrder">
+        delete from `order` where article_id = #{articleId} and user_id = #{userId}
+    </delete>
+
+    <select id="OrderStatus" resultType="int">
+        select count(*) from `order` where  article_id = #{articleId} and user_id = #{userId}
+    </select>
+
+    <select id="getUserArticle" resultType="com.house.bean.UserArticle">
+        select article.title as title, article.type as type, `user`.name as name, `user`.tel as tel, article.create_time as createTime, article.id as id
+        from `order` left join `article` on `order`.article_id = `article`.id
+        left join `user` on `user`.id = `order`.user_id
+        where `article`.user_id = #{userId} and `article`.article_type = #{type}
+    </select>
+
+
+</mapper>

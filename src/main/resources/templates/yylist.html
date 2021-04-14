@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好租网</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/bootstrap-3.3.7-dist/css/bootstrap.css}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">-->
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style1.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+</head>
+<body>
+
+<div th:replace="common/head :: head"></div>
+<div class="container" style="margin-top: 150px">
+    <div class="tt-topic-list">
+        <div class="tt-list-header">
+            <div class="tt-col-topic">标题</div>
+            <div class="tt-col-category">类型</div>
+            <div class="tt-col-value hide-mobile">用户名</div>
+            <div class="tt-col-value hide-mobile">电话</div>
+            <div class="tt-col-value hide-mobile">发布时间</div>
+        </div>
+        <div id="box">
+            <!--            <div class="tt-item">-->
+            <!--                        <div class="tt-col-avatar">-->
+            <!--                            <i class="layui-icon layui-icon-star"></i>-->
+            <!--                        </div>-->
+            <!--                        <div class="tt-col-description">-->
+            <!--                            <h6 class="tt-title">-->
+            <!--                                <a href="page-single-topic.html">-->
+            <!--                                    标题-->
+            <!--                                </a>-->
+            <!--                            </h6>-->
+            <!--                            <div class="row align-items-center no-gutters  hide-desktope">-->
+            <!--                                <div class="col-11">-->
+            <!--                                    <ul class="tt-list-badge">-->
+            <!--                                        <li class="show-mobile">-->
+            <!--                                            <span class="tt-color05 tt-badge">小屏幕类型</span>-->
+            <!--                                        </li>-->
+            <!--                                    </ul>-->
+            <!--                                </div>-->
+            <!--                                <div class="col-1 ml-auto show-mobile">-->
+            <!--                                    <div class="tt-value">小屏幕时间</div>-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="tt-col-category"><span class="tt-color05 tt-badge">大屏类型</span></div>-->
+            <!--                        <div class="tt-col-value hide-mobile">赞</div>-->
+            <!--                        <div class="tt-col-value tt-color-select hide-mobile">预约</div>-->
+            <!--                        <div class="tt-col-value hide-mobile">查看</div>-->
+            <!--                        <div class="tt-col-value hide-mobile">大屏时间</div>-->
+            <!--            </div>-->
+
+
+        </div>
+        <div id="demo0"></div>
+    </div>
+</div>
+
+
+<!-- all plugins here -->
+<script th:src="@{/assets/js/vendor.js}"></script>
+<!-- main js  -->
+<script th:src="@{/assets/js/main.js}"></script>
+
+<script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+
+<script th:inline="javascript">
+    $(document).ready(function () {
+        let count;
+        let url = [[${url}]];
+
+        function rand(id, vtitle, vtype, vtime, username, usertel) {
+            var star = '<div class="tt-col-avatar">\n' +
+                '                <i class="layui-icon layui-icon-star"></i>\n' +
+                '            </div>'
+            var title = '<h6 class="tt-title">\n' +
+                '                    <a href="/someArticle/' + id + '">\n' +
+                '                        ' + vtitle + '\n' +
+                '                    </a>\n' +
+                '                </h6>'
+            var phoneType = '<div class="col-11">\n' +
+                '                        <ul class="tt-list-badge">\n' +
+                '                            <li class="show-mobile">\n' +
+                '                                <span class="tt-color05 tt-badge">' + vtype + '</span>\n' +
+                '                            </li>\n' +
+                '                        </ul>\n' +
+                '                    </div>'
+            var phoneTime = '<div class="col-1 ml-auto show-mobile">\n' +
+                '                        <div class="tt-value">' + vtime + '</div>\n' +
+                '                    </div>'
+            var phone = '<div class="row align-items-center no-gutters  hide-desktope">' + phoneType + phoneTime + '</div>'
+
+            var ph = '<div class="tt-col-description">' + title + phone + '</div>'
+
+            var type = '<div class="tt-col-category"><span class="tt-color05 tt-badge">' + vtype + '</span></div>'
+            var zna = '<div class="tt-col-value hide-mobile">' + username + '</div>'
+            var yy = '<div class="tt-col-value tt-color-select hide-mobile">' + usertel + '</div>'
+            var vtime = '<div class="tt-col-value hide-mobile">' + vtime + '</div>'
+            // var vwatch = '<div class="tt-col-value hide-mobile">' + vwatch + '</div>'
+            var all = '<div class="tt-item">' + star + ph + type + zna + yy + vtime + '</div>'
+
+            $('#box').append(all)
+        };
+
+        function getArticle(curr, limit) {
+            $.ajax({
+                type: "GET",
+                url: url,       //"/articleR",
+                data: 'curr=' + curr + '&limit=' + limit,
+                async: false,
+                success: function (data) {
+                    var lists = data.data.pageInfo.list;
+
+                    $('#box').empty()
+                    for (let i in lists) {
+                        let time = lists[i].createTime;
+                        let d = new Date(time);
+                        // let times = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                        let times = (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes();
+                        rand(lists[i].id, lists[i].title, lists[i].type, times, lists[i].name, lists[i].tel)
+                    }
+                    count = data.data.pageInfo.total
+
+                    // // obj包含了当前分页的所有参数，比如：
+                    // console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    // console.log(obj.limit); //得到每页显示的条数
+                    // rand()
+                    // this.count = 50
+                }
+            });
+        }
+
+        getArticle(1, 10)
+
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage
+                , layer = layui.layer;
+
+            laypage.render({
+                elem: 'demo0'
+                , count: count //数据总数，从服务端得到
+                , jump: function (obj, first) {
+                    //首次不执行
+                    if (!first) {
+                        getArticle(obj.curr, obj.limit)
+                    }
+                }
+            });
+        })
+
+    });
+</script>
+</body>
+</html>

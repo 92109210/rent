@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好租网</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/bootstrap-3.3.7-dist/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style2.css}">
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">-->
+    <!--layui-->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<div th:replace="common/head :: head"></div>
+
+<div id="tt-pageContent" style="margin-top: 60px">
+    <div class="container">
+        <div class="tt-single-topic-list">
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon"><i class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#icon-ava-d"></use>
+                                </svg>
+                            </i></div>
+                            <div class="tt-avatar-title"><a href="#">用户名</a></div>
+                            <a href="#" class="tt-info-time">
+                                <i class="layui-icon layui-icon-time"></i>
+                                时间
+                            </a>
+                        </div>
+                        <h3 class="tt-item-title"><a href="#">标题</a></h3>
+                        <div class="tt-item-tag">
+                            <ul class="tt-list-badge">
+                                <li><a href="#"><span class="tt-badge">地址：</span></a></li>
+                                <li><a href="#"><span class="tt-badge">电话：</span></a></li>
+                                <li><a href="#"><span class="tt-badge">类型：</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        <p>数据库Article表的context</p>
+                        <div class="tt-item-info info-bottom">
+                            <a href="#" class="tt-icon-btn">
+                                <i class="layui-icon layui-icon-heart-fill"
+                                ></i>
+                                <span class="tt-text">671</span>
+                            </a>
+                            <a href="#" class="tt-icon-btn">
+                                <i class="layui-icon layui-icon-heart-fill"
+                                ></i>
+                                <span class="tt-text">39</span>
+                            </a>
+                            <a href="#" class="tt-icon-btn">
+                                <i class="layui-icon layui-icon-heart-fill"
+                                ></i>
+                                <span class="tt-text">12</span>
+                            </a>
+                            <div class="col-separator"></div>
+                            <a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent"><i class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#icon-share"></use>
+                                </svg>
+                            </i></a><a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent"><i class="tt-icon">
+                            <svg>
+                                <use xlink:href="#icon-flag"></use>
+                            </svg>
+                        </i></a><a href="#" class="tt-icon-btn tt-hover-02 tt-small-indent"><i class="tt-icon">
+                            <svg>
+                                <use xlink:href="#icon-reply"></use>
+                            </svg>
+                        </i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- all plugins here -->
+<script th:src="@{/assets/js/vendor.js}"></script>
+<!-- main js  -->
+<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
+</html>

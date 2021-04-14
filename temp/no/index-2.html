@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好租网</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/vendor.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/fancybox.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+</head>
+<body>
+
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <!-- search popup start-->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="td-search-popup" id="td-search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- dkt-sitebar-menu end-->
+
+    <!-- dkt-sitebar-menu start-->
+    <div class="dkt-sitebar-menu">
+        <div class="dkt-sitebar-menu">
+            <a class="dkt-sitebar-close" href="#"><i class="fa fa-times"></i></a>
+            <div class="dkt-details-inner">
+                <div class="logo">
+                    <a href="index.html"><img src="assets/img/logo-3.png" alt="img"></a>
+                </div>
+                <p class="details">Donsectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. </p>
+                <div class="address-inner">
+                    <h5>Address</h5>
+                    <p>3538 Cambridge Place Laurel, MD 20707</p>
+                </div>
+                <div class="address-inner">
+                    <h5>Phone</h5>
+                    <p>410-565-2575</p>
+                </div>
+                <div class="address-inner mb-0">
+                    <h5>Email</h5>
+                    <p>JohnPMills@dmarket.com</p>
+                </div>
+            </div>
+            <div class="dkt-market-earn">
+                <div class="address-inner">
+                    <h5>Market Earning</h5>
+                    <p>online store with lots of digital product and exclusive Item</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="earn-inner">
+                            <p>Item Sold</p>
+                            <h5>12501</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="earn-inner">
+                            <p>Total Earning</p>
+                            <h5>25804</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- dkt-sitebar-menu end-->
+
+    <!-- navbar start -->
+    <div class="navbar-area navbar-area-2">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container nav-container">
+                <div class="responsive-mobile-menu">
+                    <button class="menu toggle-btn d-block d-lg-none" data-target="#dkt_main_menu" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-left"></span>
+                        <span class="icon-right"></span>
+                    </button>
+                </div>
+                <div class="logo">
+                    <a class="main-logo" href="index.html"><img src="assets/img/logo.png" alt="img"></a>
+                </div>
+                <div class="nav-right-part nav-right-part-mobile">
+                    <a class="btn btn-base" href="#">Sign in</a>
+                </div>
+                <div class="collapse navbar-collapse" id="dkt_main_menu">
+                    <ul class="navbar-nav menu-open">
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">Home</a>
+                            <ul class="sub-menu">
+                                <li><a href="index.html">Home 01</a></li>
+                                <li><a href="index-2.html">Home 02</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">Product</a>
+                            <ul class="sub-menu">
+                                <li><a href="product.html">Product</a></li>
+                                <li><a href="product-left-sitebar.html">Left Sidebar</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="product.html">Product</a></li>
+                                <li><a href="product-details.html">Product Details</a></li>
+                                <li><a href="vendor.html">Vendor</a></li>
+                                <li><a href="category.html">Category</a></li>
+                                <li><a href="faq.html">Faq</a></li>
+                                <li><a href="policy.html">Refund Policy</a></li>
+                                <li><a href="error.html">404</a></li>
+                                <li><a href="sign-in.html">Sign In</a></li>
+                                <li><a href="sign-up.html">Sign Up</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children current-menu-item">
+                            <a href="#">Blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog.html">Blog Standard</a></li>
+                                <li><a href="blog-left-sitebar.html">Left Sidebar</a></li>
+                                <li><a href="blog-without-sitebar.html">Without Sidebar</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right-part nav-right-part-desktop">
+                    <ul>
+                        <li><a href="#"><img src="assets/img/icon/2m.png" alt="icon">0 Items</a></li>
+                        <li><a class="search" href="#"><img src="assets/img/icon/1b.png" alt="icon"></a></li>
+                        <li class="menu-bar dropdown-menu-btn"><a href="#"><i class="fa fa-bars"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- navbar end -->
+    
+    <!-- banner start -->
+    <div class="banner-area banner-area-2">
+        <div class="container">
+            <div class="banner-area-inner">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 align-self-center">
+                        <div class="banner-inner">
+                            <h2>The Biggest Marketplace for <span>Digital Product</span></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse</p>
+                            <div class="btn-wrap">
+                                <a class="btn btn-base" href="#">All Items</a>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 align-self-center">
+                        <div class="thumb">
+                            <img src="assets/img/banner/3.png" alt="img">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-area text-center">
+                            <h3>Find Your Templates</h3>
+                            <form>
+                                <select>
+                                    <option>All resources</option>
+                                    <option value="1">1 resource</option>
+                                    <option value="2">2 resource</option>
+                                    <option value="3">3 resource</option>
+                                </select>
+                                <input type="text" class="form-control">
+                                <button type="submit" class="btn"><img src="assets/img/icon/1.png" alt="img"></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner end -->
+
+    <!-- all-item area start -->
+    <section class="all-item-area all-item-area-2 pd-top-237 pd-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="section-title">
+                        <h2>Featured Items</h2>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="isotope-filters item-isotope-btn text-lg-right">
+                        <button class="button active ml-0" data-filter="*">All Items</button>
+                        <button class="button" data-filter=".cat-1">Site Templates</button>
+                        <button class="button" data-filter=".cat-2">UI Templates</button>
+                        <button class="button" data-filter=".cat-3">All Items</button>
+                    </div>
+                </div>
+            </div>
+            <div class="all-item-section">        
+                <div class="item-isotope row">
+                    <div class="item-sizer col-1"></div>
+                    <!-- gallery item start here -->
+                    <div class="all-isotope-item col-lg-4 col-sm-6 cat-1 cat-3">
+                        <div class="thumb">
+                            <a class="gallery-fancybox" href="#">
+                                <img src="assets/img/item/7.png" alt="image">
+                            </a>
+                            <a class="btn btn-white" href="#">Live Preview</a>
+                        </div>
+                        <div class="item-details">
+                            <h4><a href="#">Web Platform</a></h4>
+                            <p>Photography Word Press Theme</p>
+                            <span class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star star-o"></i>
+                                <span>(12)</span>
+                            </span>
+                            <a href="#" class="author-details align-item-center">
+                                <img src="assets/img/author/1.png" alt="img">
+                                <span>Paul E. Hensley</span>
+                            </a>
+                            <span class="price bg-white float-right">$30.00</span>
+                        </div>
+                    </div>
+                    <div class="all-isotope-item col-lg-4 col-sm-6 cat-2">
+                        <div class="thumb">
+                            <a class="gallery-fancybox" href="#">
+                                <img src="assets/img/item/8.png" alt="image">
+                            </a>
+                            <a class="btn btn-white" href="#">Live Preview</a>
+                        </div>
+                        <div class="item-details">
+                            <h4><a href="#">Case Study</a></h4>
+                            <p>Photography Word Press Theme</p>
+                            <span class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star star-o"></i>
+                                <span>(12)</span>
+                            </span>
+                            <a href="#" class="author-details align-item-center">
+                                <img src="assets/img/author/2.png" alt="img">
+                                <span>Clay J. Barfield</span>
+                            </a>
+                            <span class="price bg-white float-right">$30.00</span>
+                        </div>
+                    </div>
+                    <div class="all-isotope-item col-lg-4 col-sm-6 cat-3 cat-2">
+                        <div class="thumb">
+                            <a class="gallery-fancybox" href="#">
+                                <img src="assets/img/item/9.png" alt="image">
+                            </a>
+                            <a class="btn btn-white" href="#">Live Preview</a>
+                        </div>
+                        <div class="item-details">
+                            <h4><a href="#">Project Collaboration</a></h4>
+                            <p>Photography Word Press Theme</p>
+                            <span class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star star-o"></i>
+                                <span>(12)</span>
+                            </span>
+                            <a href="#" class="author-details align-item-center">
+                                <img src="assets/img/author/3.png" alt="img">
+                                <span>Duane A. Oliva</span>
+                            </a>
+                            <span class="price bg-white float-right">$30.00</span>
+                        </div>
+                    </div>
+                    <div class="all-isotope-item col-lg-4 col-sm-6 cat-3 cat-1">
+                        <div class="thumb">
+                            <a class="gallery-fancybox" href="#">
+                                <img src="assets/img/item/10.png" alt="image">
+                            </a>
+                            <a class="btn btn-white" href="#">Live Preview</a>
+                        </div>
+                        <div class="item-details">
+                            <h4><a href="#">Voice Landing Page</a></h4>
+                            <p>Photography Word Press Theme</p>
+                            <span class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star star-o"></i>
+                                <span>(12)</span>
+                            </span>
+                            <a href="#" class="author-details align-item-center">
+                                <img src="assets/img/author/4.png" alt="img">
+                                <span>Cynthia V. Sylvia</span>
+                            </a>
+                            <span class="price bg-white float-right">$30.00</span>
+                        </div>
+                    </div>
+                    <div class="all-isotope-item col-lg-4 col-sm-6 cat-2 cat-1">
+                        <div class="thumb">
+                            <a class="gallery-fancybox" href="#">
+                                <img src="assets/img/item/11.png" alt="image">
+                            </a>
+                            <a class="btn btn-white" href="#">Live Preview</a>
+                        </div>
+                        <div class="item-details">
+                            <h4><a href="#">Clean Dashboard</a></h4>
+                            <p>Photography Word Press Theme</p>
+                            <span class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star star-o"></i>
+                                <span>(12)</span>
+                            </span>
+                            <a href="#" class="author-details align-item-center">
+                                <img src="assets/img/author/5.png" alt="img">
+                                <span>Paul E. Hensley</span>
+                            </a>
+                            <span class="price bg-white float-right">$30.00</span>
+                        </div>
+                    </div>
+                    <div class="all-isotope-item col-lg-4 col-sm-6 cat-1 cat-2">
+                        <div class="thumb">
+                            <a class="gallery-fancybox" href="#">
+                                <img src="assets/img/item/12.png" alt="image">
+                            </a>
+                            <a class="btn btn-white" href="#">Live Preview</a>
+                        </div>
+                        <div class="item-details">
+                            <h4><a href="#">Website Redesign</a></h4>
+                            <p>Photography Word Press Theme</p>
+                            <span class="ratting">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star star-o"></i>
+                                <span>(12)</span>
+                            </span>
+                            <a href="#" class="author-details align-item-center">
+                                <img src="assets/img/author/6.png" alt="img">
+                                <span>Frances R. Leming</span>
+                            </a>
+                            <span class="price bg-white float-right">$30.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a class="btn btn-base" href="#">More Products</a>
+                </div>
+            </div>
+        </div>        
+    </section>
+    <!-- all-item area end -->
+
+    <!-- dmarket-area start -->
+    <section class="dmarket-area bg-sky-blue pd-top-90 pd-bottom-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="section-title text-center">
+                        <h2>Dmarket Features</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-dmarket-wrap">
+                        <div class="media">
+                            <div class="thumb">
+                                <img src="assets/img/icon/dmarket-1.png" alt="img">
+                            </div>
+                            <div class="wrap-details media-body">
+                                <h5><a href="#">Quality Platform</a></h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-dmarket-wrap">
+                        <div class="media">
+                            <div class="thumb bg-2">
+                                <img src="assets/img/icon/dmarket-2.png" alt="img">
+                            </div>
+                            <div class="wrap-details media-body">
+                                <h5><a href="#">Premium User</a></h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-dmarket-wrap">
+                        <div class="media">
+                            <div class="thumb bg-3">
+                                <img src="assets/img/icon/dmarket-3.png" alt="img">
+                            </div>
+                            <div class="wrap-details media-body">
+                                <h5><a href="#">Cloud Upload</a></h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- dmarket-area end -->
+
+    <!-- featured-area start -->
+    <section class="featured-area pd-top-90 pd-bottom-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="section-title text-center">
+                        <h2>New Products</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="featured-product">
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/1.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/2.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/3.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/4.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/5.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/6.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/7.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/8.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/9.png" alt="img">
+                            </a>                            
+                        </li>
+                        <li class="thumb">
+                            <a href="#">
+                                <img src="assets/img/featured/10.png" alt="img">
+                            </a>                            
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <a class="btn btn-base" href="#">Top New Files</a>
+                    <a class="btn btn-white" href="#">All Items</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- featured-area end -->
+
+    <!-- fun-fact-area start -->
+    <section class="fun-fact-area text-center pd-top-100" style="background: url(assets/img/fact/bg.png);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-fact-wrap">
+                        <div class="thumb">
+                            <img src="assets/img/fact/icon1.png" alt="img">
+                        </div>
+                        <h2><span class="counter">642</span></h2>
+                        <p class="fact-title">Happy Clients</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-fact-wrap style-2">
+                        <div class="thumb">
+                            <img src="assets/img/fact/icon2.png" alt="img">
+                        </div>
+                        <h2><span class="counter">3200</span></h2>
+                        <p class="fact-title">Premium Resources</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-fact-wrap style-3">
+                        <div class="thumb">
+                            <img src="assets/img/fact/icon3.png" alt="img">
+                        </div>
+                        <h2><span class="counter">1200</span></h2>
+                        <p class="fact-title">Total User</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-fact-wrap style-4">
+                        <div class="thumb">
+                            <img src="assets/img/fact/icon4.png" alt="img">
+                        </div>
+                        <h2><span class="counter">2500</span></h2>
+                        <p class="fact-title">Item Sold</p>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </section>
+    <!-- fun-fact-area end -->
+
+    <!-- customer-area start -->
+    <section class="customer-area pd-top-90 pd-bottom-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="section-title">
+                        <h2>Thousands Of Happy Customers!</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/img/customer/1.png" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="single-customer-wrap media">
+                        <div class="media-body">
+                            <h5>George L. Parisi</h5>
+                            <p>Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+                        </div>
+                        <div class="icon align-self-end">
+                            <img src="assets/img/icon/qoute-s.png" alt="img">
+                        </div>
+                    </div>
+                    <div class="single-customer-wrap media nesting">
+                        <div class="media-body">
+                            <h5>Miguel V. Henley</h5>
+                            <p>Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+                        </div>
+                        <div class="icon align-self-end">
+                            <img src="assets/img/icon/qoute-s.png" alt="img">
+                        </div>
+                    </div>
+                    <div class="single-customer-wrap media">
+                        <div class="media-body">
+                            <h5>Mary Gregory</h5>
+                            <p>Lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+                        </div>
+                        <div class="icon align-self-end">
+                            <img src="assets/img/icon/qoute-s.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- customer-area end -->
+
+    <!--blog-area start-->
+    <section class="blog-area-2 pd-top-90 pd-bottom-70 bg-sky-blue">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <h2>Recent Articles</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-wrap">
+                        <div class="thumb">
+                            <img src="assets/img/blog/1.png" alt="img">
+                        </div>
+                        <div class="blog-details">
+                            <div class="meta">
+                                <span><i class="far fa-calendar-alt"></i>28 JANUARY, 2020</span>
+                            </div>
+                            <h5><a href="#">10 Reasons To Start Your Own, Profitable Website!</a></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-wrap">
+                        <div class="thumb">
+                            <img src="assets/img/blog/2.png" alt="img">
+                        </div>
+                        <div class="blog-details">
+                            <div class="meta">
+                                <span><i class="far fa-calendar-alt"></i>28 JANUARY, 2020</span>
+                            </div>
+                            <h5><a href="#">You can also find trends and techniques from other UXers</a></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-wrap">
+                        <div class="thumb">
+                            <img src="assets/img/blog/3.png" alt="img">
+                        </div>
+                        <div class="blog-details">
+                            <div class="meta">
+                                <span><i class="far fa-calendar-alt"></i>28 JANUARY, 2020</span>
+                            </div>
+                            <h5><a href="#">UX design blog focusing on accessibility and design.</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--blog-area end-->
+
+
+    <!-- footer area start -->
+    <footer class="footer-area-2 pd-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget widget widget_about">
+                        <div class="logo">
+                            <img src="assets/img/logo-2.png" alt="img">
+                        </div>
+                        <p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                        <p><i class="la la-arrow-right"></i><span>230.543 Products</span></p>
+                        <p><i class="la la-arrow-right"></i><span>655.3060 Members</span></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget widget widget_contact">
+                        <h4 class="widget-title">Contact Us</h4>
+                        <div class="media">
+                            <div class="thumb">
+                                <img src="assets/img/footer/1m.png" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <p>2200 Pooz Street</p>
+                                <p>Henderson, TN 38340</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb mt-0">
+                                <img src="assets/img/footer/2m.png" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <p class="m-0">example@mail.com</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="thumb mt-0">
+                                <img src="assets/img/footer/3m.png" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <p class="m-0">517-383-6673</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget widget widget widget_products">
+                        <h4 class="widget-title">Products</h4>
+                        <ul>
+                            <li><a href="#">Graphics (26)</a></li>
+                            <li><a href="#">Backgrounds (11)</a></li>
+                            <li><a href="#">Fonts (9)</a></li>
+                            <li><a href="#">Music (3)</a></li>
+                            <li><a href="#">Photography (3)</a></li>
+                            <li><a href="#">Themes (3)</a></li>
+                            <li><a href="#">Web Templates (3)</a></li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer-widget widget widget_newsletter">
+                        <h4 class="widget-title">Our Newsletter</h4>
+                        <p>Fed do eiusmod tempor incidi dunt ut labore et dolore</p>
+                        <div class="single-input-wrap input-group">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Your Email Address">
+                        </div>
+                        <button class="btn btn-base">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Footer bottom-->
+        <div class="container">
+            <div class="copyright-area">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <p>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="https://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                    </div>
+                    <div class="col-lg-6 text-lg-right text-center">
+                        <ul class="social-area">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </footer>
+    <!-- footer area end -->
+
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fa fa-angle-up"></i></span>
+    </div>
+    <!-- back to top area end -->
+
+
+    <!-- all plugins here -->
+    <script src="assets/js/vendor.js"></script>
+    <!-- main js  -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

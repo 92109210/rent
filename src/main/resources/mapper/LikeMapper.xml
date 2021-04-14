@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.LikeMapper">
+
+    <select id="selectByArticleId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select count(*) from articleLike
+        where article_id = #{id}
+    </select>
+
+    <select id="isExist" resultType="java.lang.Boolean">
+        select count(*) from articleLike
+        where user_id = #{userId} and article_id = #{articleId}
+    </select>
+
+    <insert id="add">
+        insert into articleLike (user_id, article_id) values (#{userId}, #{articleId})
+    </insert>
+
+    <delete id="delete">
+        delete from articleLike where user_id=#{userId} and article_id= #{articleId}
+    </delete>
+
+    <select id="likeStatus" resultType="int">
+        select count(*) from articleLike
+        where user_id=#{userId} and article_id= #{articleId}
+    </select>
+
+</mapper>

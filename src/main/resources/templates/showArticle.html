@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好租网</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/bootstrap-3.3.7-dist/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style2.css}">
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">-->
+    <!--layui-->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<div th:replace="common/head :: head"></div>
+
+<div id="tt-pageContent" style="margin-top: 60px">
+    <div class="container">
+        <div class="tt-single-topic-list">
+            <div class="tt-item">
+                <div class="tt-single-topic">
+                    <div class="tt-item-header">
+                        <div class="tt-item-info info-top">
+                            <div class="tt-avatar-icon"><i class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#icon-ava-d"></use>
+                                </svg>
+                            </i></div>
+                            <div class="tt-avatar-title"><a href="#" id="uesrname">用户名</a></div>
+                            <a href="#" class="tt-info-time">
+                                <i class="layui-icon layui-icon-time"></i>
+                                <a id="time">时间</a>
+                            </a>
+                        </div>
+                        <h3 class="tt-item-title"><a href="#" id="title">标题</a></h3>
+                        <div class="tt-item-tag">
+                            <ul class="tt-list-badge">
+                                <li><a href="#"><span class="tt-badge" id="address">地址：</span></a></li>
+                                <li><a href="#"><span class="tt-badge" id="tel">电话：</span></a></li>
+                                <li><a href="#"><span class="tt-badge" id="type">类型：</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tt-item-description">
+                        <p id="content"></p>
+                        <div class="tt-item-info info-bottom">
+                            <a id="likeButton" class="tt-icon-btn">
+                                <i class="layui-icon layui-icon-heart-fill"
+                                ></i>
+                                <span id="likeCount" class="tt-text"></span>
+                            </a>
+                            <a id="yy" class="tt-icon-btn">
+                                <i class="layui-icon layui-icon-heart-fill"
+                                ></i>
+                                <span id="orderCount" class="tt-text">预约</span>
+                            </a>
+                            <a id="coll" class="tt-icon-btn">
+                                <i class="layui-icon layui-icon-heart-fill"
+                                ></i>
+                                <span id="collect" class="tt-text">收藏</span>
+                            </a>
+                            <div class="col-separator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- all plugins here -->
+    <script th:src="@{/assets/js/vendor.js}"></script>
+    <!-- main js  -->
+    <script th:src="@{/assets/js/main.js}"></script>
+
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            let article = [[${article}]];
+            //后端初始化状态
+            let likeFlag = false;
+            let yyFlag = false;
+            let collectFlag = false;
+
+            console.log(article);
+            let articleId = article.id;
+            $('#title').append(article.title)
+            $('#tel').append(article.tel)
+            $('#type').append(article.type)
+            $('#time').append(article.createTime)
+            $('#address').append(article.address)
+            $('#content').append(article.context)
+            $('#likeCount').append(article.countLike)
+
+            //状态初始化
+            $.ajax({
+                type: "GET",
+                url: "/LikeStatus/" + articleId,
+                async: false,
+                success: function (data) {
+                    if (data.code == 200) {
+                        likeFlag = true;
+                        //换图标
+                    }
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: "/OrderStatus/" + articleId,
+                async: false,
+                success: function (data) {
+                    if (data.code == 200) {
+                        yyFlag = true;
+                        $('#orderCount').empty();
+                        $('#orderCount').append("取消预约");
+                        //换图标
+                    }
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: "/Collect/" + articleId,
+                async: false,
+                success: function (data) {
+                    if (data.code == 200) {
+                        collectFlag = true;
+                        $('#collect').empty();
+                        $('#collect').append("取消收藏");
+                        //换图标
+                    }
+                }
+            });
+
+            //点赞
+            $('#likeButton').click(function () {
+                let count = $('#likeCount').text();
+                count = Number(count);
+                $('#likeCount').empty();
+                if (!likeFlag) {
+                    $('#likeCount').append(count + 1);
+                    $.ajax({
+                        type: "POST",
+                        url: "/Like/" + articleId,
+                    });
+                } else {
+                    $('#likeCount').append(count - 1);
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/Like/" + articleId,
+                    });
+                }
+                likeFlag = !likeFlag;
+            })
+
+            //预约
+            $('#yy').click(function () {
+                // let count = $('#orderCount').text();
+                // count = Number(count);
+                $('#orderCount').empty();
+                if (!yyFlag) {
+                    // $('#orderCount').append(count + 1);
+                    $('#orderCount').append("取消预约");
+                    $.ajax({
+                        type: "POST",
+                        url: "/Order/" + articleId,
+                    });
+                } else {
+                    $('#orderCount').append("预约");
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/Order/" + articleId,
+                    });
+                }
+                yyFlag = !yyFlag;
+            })
+
+            //收藏
+            $('#coll').click(function () {
+                $('#collect').empty();
+                if (!collectFlag) {
+                    $('#collect').append("取消收藏");
+                    $.ajax({
+                        type: "POST",
+                        url: "/Collect/" + articleId,
+                    });
+                } else {
+                    $('#collect').append("收藏");
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/Collect/" + articleId,
+                    });
+                }
+                collectFlag = !collectFlag;
+            })
+        });
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Stylesheet -->
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
+    <link rel="stylesheet" th:href="@{/assets/css/style1.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <!--    <link rel="stylesheet" th:href="@{/assets/css/magnific-popup.css}">-->
+    <!--layui-->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+</head>
+<body>
+<div th:replace="common/head :: head"></div>
+
+<div class="container" style="margin-top:150px;">
+    <div class="tt-wrapper-inner"><h1 class="tt-title-border">发布信息:</h1>
+        <form id="form" class="form-default form-create-topic" action="/article" method="post">
+            <div class="form-group"><label for="inputTopicTitle">标题</label>
+                <div class="tt-value-wrapper">
+                    <input type="text" name="title" class="form-control"
+                           id="inputTopicTitle" placeholder="请输入你的标题">
+                    <span class="tt-value-input">99</span>
+                </div>
+                <!--                <div class="tt-note">标题内容</div>-->
+            </div>
+            <div class="form-group"><label>出租屋地址</label>
+                <div class="tt-value-wrapper">
+                    <input type="text" name="address" class="form-control"
+                           id="inputAdr" placeholder="XX省XX市XX（县/区）">
+                    <span class="tt-value-input">50</span>
+                </div>
+            </div>
+            <div class="form-group"><label>联系电话</label>
+                <div class="tt-value-wrapper">
+                    <input type="text" name="tel" class="form-control"
+                           id="inputTel" placeholder="联系电话，请输入11位手机号码">
+                    <span class="tt-value-input">11</span>
+                </div>
+            </div>
+            <div class="form-group"><label>类型</label>
+                <div class="tt-value-wrapper">
+                    <input type="text" name="type" class="form-control"
+                           id="inputType" placeholder="">
+                    <span class="tt-value-input">10</span>
+                </div>
+            </div>
+            <!--富文本框-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                <legend>详细内容</legend>
+            </fieldset>
+
+            <textarea name="context" class="layui-textarea" id="LAY_demo1" style="display: none"></textarea>
+
+            <div class="site-demo-button" style="margin-top: 20px;">
+                <button type="button" class="layui-btn site-demo-layedit" data-type="content">发布信息</button>
+                <!--                <button class="layui-btn site-demo-layedit" data-type="text">获取编辑器纯文本内容</button>-->
+                <!--                <button class="layui-btn site-demo-layedit" data-type="selection">获取编辑器选中内容</button>-->
+            </div>
+
+            <!--            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">-->
+            <!--                <legend>自定义工具栏</legend>-->
+            <!--            </fieldset>-->
+
+            <div style="margin-bottom: 20px; width: 500px;">
+                <!--                <textarea class="layui-textarea" id="LAY_demo2" style="display: block"></textarea>-->
+            </div>
+            <!--富文本框结束-->
+        </form>
+    </div>
+</div>
+<!-- all plugins here-->
+<script th:src="@{/assets/js/vendor.js}"></script>
+
+<!-- js-->
+<script th:src="@{/assets/js/jquery-3.6.0.js}"></script>
+<!-- js form-->
+<!--<script th:src="@{/assets/js/jquery.form.min.js}"></script>-->
+
+<!-- main js  -->
+<script th:src="@{/assets/js/main.js}"></script>
+<!--富文本框js-->
+<script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述 JS 路径需要改成你本地的 -->
+<script th:inline="javascript">
+
+    let url = [[${url}]];
+    layui.use('layedit', function () {
+        var layedit = layui.layedit
+            , $ = layui.jquery;
+        //图片上传接口
+        layedit.set({
+            uploadImage: {
+                url: '/article/fileupload' //接口url
+                , type: '' //默认post
+            }
+        });
+
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+
+        //编辑器外部操作
+        var active = {
+            content: function () {
+                alert(layedit.getContent(index)); //获取编辑器内容
+                // $("#form").ajaxSubmit(function (message) {
+                //     alert(message)
+                //     console.log(message)
+                //     alert(message)
+                // });
+
+                // var form_addServiceInfoAll = $('form').serializeArray()
+                // $('textarea').append(layedit.getContent(index));
+                // console.log(textareaContents)
+                layedit.sync(index)
+                $.ajax({
+                    type: "POST",   //提交的方法
+                    url: url, //提交的地址
+                    data: $('form').serializeArray(),// 序列化表单值
+                    async: true,
+                    error: function (request) {  //失败的话
+                        alert("连接失败");
+                    },
+                    success: function (data) {  //成功
+                        alert(data.msg);  //就将返回的数据显示出来
+                        if (data.code == 200) {
+                            window.location.href = "/page/index"
+                        }
+                    }
+                });
+            }
+
+            , text: function () {
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            , selection: function () {
+                alert(layedit.getSelection(index));
+            }
+        };
+
+        $('.site-demo-layedit').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        // //自定义工具栏
+        // layedit.build('LAY_demo2', {
+        //     tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+        //     , height: 100
+        // })
+    });
+</script>
+<!--富文本框js结束-->
+
+</body>
+</html>

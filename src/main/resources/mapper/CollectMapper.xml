@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.CollectMapper">
+    <!--    //收藏-->
+    <!--    Boolean create(Integer userId, Integer articleId);-->
+    <insert id="create">
+        insert into collect (user_id, article_id) values (#{userId}, #{articleId})
+    </insert>
+
+    <!--    //判断收藏是否存在-->
+    <!--    Boolean isExit(Integer userId, Integer ArticleId);-->
+    <select id="isExit" resultType="java.lang.Boolean">
+        select count(*) from collect where user_id = #{userId} and article_id = #{articleId}
+    </select>
+
+    <!--    //取消收藏-->
+    <!--    Boolean delete(Integer userId, Integer ArticleId);-->
+    <delete id="delete">
+        delete from collect where user_id = #{userId} and article_id = #{articleId}
+    </delete>
+
+
+    <!--    //查询用户收藏,类型，false为出租，true为求租-->
+    <!--    List<ArticleLO> select(Integer userId,Boolean type);-->
+    <select id="select" resultType="com.house.bean.ArticleLO">
+        SELECT article.*, COUNT(articlelike.article_id) as countLike, COUNT(order.article_id) as countOrder
+        FROM `article` LEFT JOIN `articlelike` on article.id = articlelike.article_id
+        inner JOIN `collect` on article.id = collect.article_id
+        left JOIN `order` ON article.id = `order`.article_id
+        WHERE article.is_del = 0
+        <if test="userId != null">AND `collect`.user_id = #{userId}</if>
+        GROUP BY article.id
+        ORDER BY article.create_time DESC
+    </select>
+<!--    <if test="id != null">AND article.id = #{id}</if>-->
+
+</mapper>

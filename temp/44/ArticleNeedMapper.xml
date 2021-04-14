@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.house.dao.ArticleNeedMapper">
+
+    <!--    自增主键，通常不用设置-->
+    <!--    不能添加全空articleNeed-->
+    <insert id="add" parameterType="com.house.bean.Article">
+        insert into articleNeed (
+        <trim prefix="" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="title != null">title,</if>
+            <if test="address != null">address,</if>
+            <if test="tel != null">tel,</if>
+            <if test="type != null">type,</if>
+            <if test="isDel != null">is_del,</if>
+            <if test="isBan != null">is_ban,</if>
+            <if test="context != null">context,</if>
+        </trim>
+        )
+        values (
+        <trim prefix="" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="title != null">#{title},</if>
+            <if test="address != null">#{address},</if>
+            <if test="tel != null">#{tel},</if>
+            <if test="type != null">#{type},</if>
+            <if test="isDel != null">#{is_del},</if>
+            <if test="isBan != null">#{is_ban},</if>
+            <if test="context != null">#{context},</if>
+        </trim>
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.house.bean.Article">
+        delete from articleNeed
+        <where>
+            <if test="id != null">id = #{id},</if>
+            <if test="userId != null">AND user_id = #{userId}</if>
+            <if test="createTime != null">AND create_time = #{createTime}</if>
+            <if test="title != null">AND title = #{title}</if>
+            <if test="address != null">AND address = #{address}</if>
+            <if test="tel != null">AND tel = #{tel}</if>
+            <if test="type != null">AND type = #{type}</if>
+            <if test="isDel != null">AND is_del = #{isDel}</if>
+            <if test="isBan != null">AND is_ban = #{isBan}</if>
+            <if test="context != null">AND context = #{context}</if>
+        </where>
+    </delete>
+
+    <!--    不应该更新id-->
+    <update id="update">
+        update articleNeed
+        <set>
+            <if test="new.id != null">id = #{new.id},</if>
+            <if test="new.userId != null">user_id = #{new.userId},</if>
+            <if test="new.createTime != null">create_time = #{new.createTime},</if>
+            <if test="new.title != null">title = #{new.title},</if>
+            <if test="new.address != null">address = #{new.address},</if>
+            <if test="new.tel != null">tel = #{new.tel},</if>
+            <if test="new.type != null">type = #{new.type},</if>
+            <if test="new.isDel != null">is_del = #{new.isDel},</if>
+            <if test="new.isBan != null">is_ban = #{new.isBan},</if>
+            <if test="new.context != null">context = #{new.context},</if>
+        </set>
+        <where>
+            <if test="old.id != null">id = #{old.id}</if>
+            <if test="old.userId != null">AND user_id = #{old.userId}</if>
+            <if test="old.createTime != null">AND create_time = #{old.createTime}</if>
+            <if test="old.title != null">AND title = #{old.title}</if>
+            <if test="old.address != null">AND address = #{old.address}</if>
+            <if test="old.tel != null">AND tel = #{old.tel}</if>
+            <if test="old.type != null">AND type = #{old.type}</if>
+            <if test="old.isDel != null">AND is_del = #{old.isDel}</if>
+            <if test="old.isBan != null">AND is_ban = #{old.isBan}</if>
+            <if test="old.context != null">AND context = #{old.context}</if>
+        </where>
+    </update>
+
+    <select id="select" parameterType="com.house.bean.Article" resultType="com.house.bean.Article">
+        SELECT * FROM articleNeed
+        <where>
+            <if test="id != null">id = #{id}</if>
+            <if test="userId != null">AND user_id = #{userId}</if>
+            <if test="createTime != null">AND create_time = #{createTime}</if>
+            <if test="title != null">AND title = #{title}</if>
+            <if test="address != null">AND address = #{address}</if>
+            <if test="tel != null">AND tel = #{tel}</if>
+            <if test="type != null">AND type = #{type}</if>
+            <if test="isDel != null">AND is_del = #{isDel}</if>
+            <if test="isBan != null">AND is_ban = #{isBan}</if>
+            <if test="context != null">AND context = #{context}</if>
+        </where>
+    </select>
+
+</mapper>

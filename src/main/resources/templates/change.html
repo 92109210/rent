@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好租网</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/assets/css/vendor.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/fancybox.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}">
+    <!-- 引入 layui.css -->
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+
+</head>
+<body>
+
+<div th:replace="common/head :: head"></div>
+<!--layui表单-->
+<div class="layui-container" style="margin-top: 150px">
+    <div class="layui-row">
+        <div class="layui-col-md8 layui-col-md-offset2">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">账号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="account" disabled readonly
+                               class="layui-input layui-input layui-disabled"
+                               th:placeholder="${session.user==null?'':session.user.getAccount()}"
+                               autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">修改密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="password" placeholder=""
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <!--                    <div class="layui-form-mid layui-word-aux">辅助文字</div>-->
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" placeholder=""
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">电话</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="tel" placeholder=""
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">年龄</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="age" placeholder=""
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即修改</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- all plugins here -->
+<script th:src="@{/assets/js/vendor.js}"></script>
+<!-- main js  -->
+<script th:src="@{/assets/js/main.js}"></script>
+
+<!-- 引入 layui.js -->
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //Demo
+    layui.use('form', function () {
+        let form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            $.ajax({
+                type: "POST",
+                url: "/change",
+                data: data.field,
+                success: function (data) {
+
+                }
+            });
+            return false;
+        });
+    });
+
+
+</script>
+</body>
+</html>
